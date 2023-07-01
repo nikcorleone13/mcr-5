@@ -1,0 +1,17 @@
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import { Home } from "./pages/Home";
+import DishPage from "./pages/DishPage";
+
+function App() {
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/dish/:dishId" element={<DishPage />} />
+      </Routes>
+    </>
+  );
+}
+
+export default App;

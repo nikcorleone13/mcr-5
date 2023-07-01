@@ -1,0 +1,145 @@
+import { createContext, useReducer } from "react";
+import { v4 as uuid } from "uuid";
+import { DataContext } from "./DataContext";
+const data = [
+  {
+    id: uuid(),
+    dish: "Paneer Tikka Masala",
+    cuisine: "Indian",
+    ingredients: [
+      "curd (thick)",
+      "turmeric",
+      "chilli powder",
+      "cumin powder",
+      "coriander powder",
+      "pepper powder",
+      "garam masala",
+      "ajwain / carom seeds",
+      "salt",
+      "kasuri methi",
+      " besan / gram flour (roasted)",
+      "oil",
+      "lemon juice",
+      " ginger garlic paste",
+      "capsicum (cubed)",
+      "onion (petals)",
+      "cubes paneer",
+    ],
+    recipe: [
+      "In a large bowl, combine all the ingredients for the marinade and mix well.",
+      "Add the paneer cubes to the marinade and gently coat them with the mixture. Allow the paneer to marinate for at least 30 minutes. You can refrigerate it for a few hours or overnight for better flavor.",
+      "Preheat your grill or oven to medium-high heat.",
+      "Thread the marinated paneer cubes, bell peppers, and onions onto the soaked wooden skewers, alternating between the ingredients.",
+      "Brush the skewers with vegetable oil to prevent sticking.",
+      "Grill the skewers for about 8-10 minutes, turning occasionally, until the paneer is lightly charred and the vegetables are cooked. Alternatively, you can bake them in a preheated oven at 400°F (200°C) for about 15-20 minutes.",
+      "Remove the paneer tikka skewers from the grill or oven and sprinkle them with lemon juice.",
+      "Serve the paneer tikka hot with mint chutney or a side of yogurt.",
+    ],
+    image:
+      "https://img.taste.com.au/6OKYZMN6/w720-h480-cfill-q80/taste/2019/06/one-pan-paneer-and-spinach-tikka-masala-150801-1.jpg",
+  },
+  {
+    id: uuid(),
+    dish: "Butter Chicken",
+    cuisine: "Indian",
+    ingredients: [
+      "1.5 lbs (700g) boneless, skinless chicken thighs or breasts, cut into bite-sized pieces",
+      "1 cup plain yogurt",
+      "2 tablespoons lemon juice",
+      "1 tablespoon ginger-garlic paste",
+      "1 teaspoon ground cumin",
+      "1 teaspoon ground coriander",
+      "1 teaspoon turmeric powder",
+      "1 teaspoon red chili powder",
+      "Salt to taste",
+      "For the sauce:",
+      "3 tablespoons butter",
+      "1 large onion, finely chopped",
+      "2 teaspoons ginger-garlic paste",
+      "1 teaspoon ground cumin",
+      "1 teaspoon ground coriander",
+      "1 teaspoon garam masala",
+      "1 teaspoon paprika",
+      "1 cup tomato puree",
+      "1 cup heavy cream",
+      "1 tablespoon sugar",
+      "Salt to taste",
+      "Fresh cilantro, chopped (for garnish)",
+    ],
+    recipe: [
+      "In a bowl, combine all the ingredients for the marinade. Add the chicken pieces and mix well to coat them evenly. Cover and refrigerate for at least 1 hour or overnight for best results.",
+      "Preheat your grill or oven to medium-high heat. Thread the marinated chicken onto skewers and grill for about 8-10 minutes per side until cooked through. If using an oven, arrange the chicken on a baking sheet and bake at 400°F (200°C) for about 15-20 minutes until cooked.",
+      "In a large saucepan or skillet, melt the butter over medium heat. Add the chopped onion and cook until soft and translucent.",
+      "Add the ginger-garlic paste and cook for another 1-2 minutes until fragrant.",
+      "Stir in the ground cumin, ground coriander, garam masala, and paprika. Cook for a minute to toast the spices.",
+      "Add the tomato puree to the pan and cook for 2-3 minutes, stirring occasionally.",
+      "Reduce the heat to low and pour in the heavy cream. Stir well to combine the cream with the tomato mixture.",
+      "Add sugar and salt to taste. Simmer the sauce for 5-7 minutes until it thickens slightly.",
+      "Remove the cooked chicken from the skewers and add them to the sauce. Stir well to coat the chicken with the buttery tomato sauce. Cook for an additional 2-3 minutes to allow the flavors to meld together.",
+      "Garnish with fresh cilantro and serve hot with naan bread or steamed rice.",
+    ],
+    image:
+      "https://www.licious.in/blog/wp-content/uploads/2020/10/butter-chicken-.jpg",
+  },
+  {
+    id: uuid(),
+    dish: "Margherita Pizza",
+    cuisine: "Italian",
+    ingredients: [
+      "Pizza dough",
+      "Tomato sauce",
+      "Mozzarella cheese",
+      "Fresh basil leaves",
+      "Extra-virgin olive oil",
+      "Salt",
+      "Black pepper",
+    ],
+    recipe: [
+      "Preheat the oven to 475°F (245°C).",
+      "Roll out the pizza dough into your desired shape and thickness.",
+      "Spread the tomato sauce evenly over the dough, leaving a small border around the edges.",
+      "Sprinkle the mozzarella cheese on top of the sauce.",
+      "Tear the fresh basil leaves and distribute them over the cheese.",
+      "Drizzle some extra-virgin olive oil over the pizza.",
+      "Season with salt and black pepper to taste.",
+      "Place the pizza in the preheated oven and bake for about 12-15 minutes, or until the crust is golden and the cheese is bubbly and slightly browned.",
+      "Remove the pizza from the oven and let it cool for a few minutes before slicing and serving.",
+    ],
+    image:
+      "https://images.ctfassets.net/nw5k25xfqsik/64VwvKFqxMWQORE10Tn8pY/200c0538099dc4d1cf62fd07ce59c2af/20220211142754-margherita-9920.jpg?w=1024",
+  },
+  {
+    id: uuid(),
+    dish: "Kurtossh",
+    cuisine: "Hungarian",
+    ingredients: [
+      "Flour",
+      "Yeast",
+      "Sugar",
+      "Salt",
+      "Milk",
+      "Butter",
+      "Cinnamon",
+      "Sugar (for coating)",
+    ],
+    recipe: [
+      "In a mixing bowl, combine flour, yeast, sugar, and salt.",
+      "Warm the milk and melt the butter. Add the warm milk and melted butter to the dry ingredients.",
+      "Knead the dough until smooth and elastic. Let it rest for about 1 hour or until doubled in size.",
+      "Punch down the dough and divide it into small portions.",
+      "Roll each portion into a long strip and sprinkle with a mixture of cinnamon and sugar.",
+      "Wrap the dough strip around a cone-shaped baking mold, starting from the bottom and overlapping as you go.",
+      "Bake in a preheated oven at 350°F (180°C) for about 20-25 minutes or until golden brown.",
+      "Remove the baked Kurtossh from the mold and let it cool slightly before serving.",
+    ],
+    image: "https://www.kurtosshhh.com/images/imagebox/2.jpg",
+  },
+];
+
+// const [state, dispatch] = useReducer(reducerFunction, data);
+
+export const DataProvider = ({ children }) => (
+  <DataContext.Provider value={{ dishData: data }}>
+    {children}
+  </DataContext.Provider>
+);
